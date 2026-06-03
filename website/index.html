@@ -382,7 +382,7 @@ section{padding:88px 0}
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <ul class="nav-links">
       <li><a href="#" class="active">Accueil</a></li>
-      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#tabs">Fonctionnalités</a></li>
       <li><a href="#overlay">Overlay</a></li>
       <li><a href="#how">Comment ça marche</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -406,7 +406,7 @@ section{padding:88px 0}
     <p class="hero-tagline">Ne perdez plus jamais une bio rentable.<br><strong>Overlay en jeu, suivi automatique, valeurs Vista Genomics en temps réel.</strong></p>
     <div class="hero-btns">
       <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary" target="_blank" rel="noopener">&#11015; Télécharger gratuitement</a>
-      <a href="#features" class="btn btn-ghost">Découvrir les fonctionnalités</a>
+      <a href="#tabs" class="btn btn-ghost">Découvrir les fonctionnalités</a>
     </div>
     <div class="hero-trust">
       <div class="trust-item"><span class="trust-dot" style="background:var(--green);box-shadow:0 0 6px var(--green)"></span>100% gratuit</div>
@@ -459,9 +459,6 @@ section{padding:88px 0}
             <div class="overlay-feat-text"><h5>Valeur estimée de l'espèce</h5><p>Prenez vos décisions d'exploration avec la valeur Vista Genomics affichée en permanence.</p></div>
           </div>
         </div>
-        <div style="margin-top:28px">
-          <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary" target="_blank" rel="noopener">&#11015; Télécharger et essayer l'overlay</a>
-        </div>
       </div>
       <div class="overlay-visual reveal-right">
         <div class="overlay-preview">
@@ -497,10 +494,12 @@ section{padding:88px 0}
     <p class="s-sub reveal">Chaque onglet répond à un besoin précis de l'explorateur exobiologiste.</p>
     <div class="tabs-nav reveal">
       <button class="tab-btn active" onclick="stab('overlay',this)">Overlay</button>
+      <button class="tab-btn" onclick="stab('accueil',this)">Accueil</button>
       <button class="tab-btn" onclick="stab('scanner',this)">Scanner</button>
       <button class="tab-btn" onclick="stab('systemes',this)">Systèmes</button>
       <button class="tab-btn" onclick="stab('planetes',this)">Planètes</button>
       <button class="tab-btn" onclick="stab('journals',this)">Journals</button>
+      <button class="tab-btn" onclick="stab('diag',this)">Diagnostic</button>
       <button class="tab-btn" onclick="stab('config',this)">Configuration</button>
     </div>
     <div class="tab-c active" id="t-overlay"><div class="tab-panel"><div class="tab-text"><h3>Overlay intelligent en jeu</h3><p>L'assistant exobiologie directement intégré à Elite Dangerous. Toutes les informations essentielles sont affichées en temps réel pendant vos explorations, sans quitter le jeu.</p><ul><li>Progression des scans : 1/3 → 2/3 → 3/3</li><li>Distance minimale avant le prochain échantillon</li><li>Notification "Scan possible"</li><li>Valeur estimée de l'espèce détectée</li><li>Informations contextuelles en temps réel</li><li>Overlay transparent et non intrusif</li><li>Compatible Elite Dangerous Odyssey</li><li>Apparition automatique uniquement lorsque nécessaire</li></ul></div><div class="tslide-wrap" id="tslide-wrap">
@@ -521,10 +520,12 @@ section{padding:88px 0}
           <span class="tslide-dot" onclick="tslideTo(1)"></span>
         </div>
       </div></div></div>
+    <div class="tab-c" id="t-accueil"><div class="tab-panel"><div class="tab-text"><h3>Tableau de bord</h3><p>La page d'accueil centralise toutes vos statistiques d'exploration en un coup d'œil. Dès le lancement, vous savez exactement où vous en êtes.</p><ul><li>Statistiques globales : systèmes, planètes, bios, ventes</li><li>Valeur transportée — données non encore vendues à Vista Genomics</li><li>Nombre d'espèces uniques découvertes</li><li>Dernier système et dernière planète visités</li><li>État du scanner et des Journals en temps réel</li><li>Accès rapide aux scans non vendus</li></ul></div><div class="tab-shot"><img src="screenshots/accueil.png" alt="Tableau de bord"></div></div></div>
     <div class="tab-c" id="t-scanner"><div class="tab-panel"><div class="tab-text"><h3>Scanner</h3><p>Le centre de votre activité d'exobiologie. Tout est automatique via les Journals.</p><ul><li>Statistiques globales en temps réel</li><li>Total vendu avec format compact</li><li>Estimation planète (fourchette min/max par genre)</li><li>Données transportées (valeur à risque)</li><li>Journal de détection en direct</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Scanner"></div></div></div>
     <div class="tab-c" id="t-systemes"><div class="tab-panel"><div class="tab-text"><h3>Systèmes</h3><p>Vue d'ensemble de tous les systèmes réellement explorés.</p><ul><li>Systèmes vérifiés uniquement (honk, DSS, bio)</li><li>Distance en temps réel</li><li>Progression des bios et filtres avancés</li><li>Badge SCANNÉ pour systèmes sans bios</li></ul></div><div class="tab-shot"><img src="screenshots/systemes.png" alt="Systèmes"></div></div></div>
     <div class="tab-c" id="t-planetes"><div class="tab-panel"><div class="tab-text"><h3>Planètes</h3><p>Suivi détaillé planète par planète.</p><ul><li>Statuts : Complétée / À faire</li><li>Progression bio_done / bio_count</li><li>Notes personnelles et actions rapides</li></ul></div><div class="tab-shot"><img src="screenshots/planetes.png" alt="Planètes"></div></div></div>
     <div class="tab-c" id="t-journals"><div class="tab-panel"><div class="tab-text"><h3>Journals</h3><p>Historique complet de vos scans et ventes.</p><ul><li>Statuts : NON VENDU / VENDU / PERDU</li><li>Données transportées (montant à risque)</li><li>Gains par système</li><li>Gestion automatique de la mort</li></ul></div><div class="tab-shot"><img src="screenshots/journals.png" alt="Journals"></div></div></div>
+    <div class="tab-c" id="t-diag"><div class="tab-panel"><div class="tab-text"><h3>Diagnostic</h3><p>L'onglet Diagnostic vous donne une vue complète de l'état de l'application. Idéal pour vérifier que tout fonctionne correctement ou pour préparer un rapport de support.</p><ul><li>Score global — état de tous les modules en pourcentage</li><li>État des Journals : dossier, fichier actif, événements lus, erreurs</li><li>Dernier système, planète et bio détectés</li><li>État de la base de données SQLite</li><li>Overlay : actif, fenêtre Elite Dangerous détectée</li><li>Temps de fonctionnement depuis le lancement</li><li>Vérification des mises à jour</li><li>Export rapport JSON + TXT lisible sur Discord</li><li>Outils de maintenance : intégrité, optimisation, sauvegarde</li></ul></div><div class="tab-shot"><img src="screenshots/diagnostic.png" alt="Diagnostic"></div></div></div>
     <div class="tab-c" id="t-config"><div class="tab-panel"><div class="tab-text"><h3>Configuration</h3><p>Paramètres, overlay et sauvegarde.</p><ul><li>Mode debug overlay (Ctrl+Shift+O)</li><li>Export / Import JSON</li><li>Backup automatique avant import</li><li>Centre d'aide intégré</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Config"></div></div></div>
   </div>
 </section>
@@ -564,77 +565,7 @@ section{padding:88px 0}
   </div>
 </section>
 
-<!-- ═══════════ FEATURES ═══════════ -->
-<section id="features">
-  <div class="c text-center">
-    <div class="s-label reveal">Fonctionnalités</div>
-    <h2 class="s-title reveal">Découvrez tout ce que peut faire Exobiology Scanner</h2>
-    <p class="s-sub reveal">Un outil complet pensé pour les explorateurs exobiologistes qui veulent maximiser leurs expéditions.</p>
-    <div class="feat-grid">
-      <div class="feat reveal delay-1">
-        <div class="feat-icon fi1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <span class="feat-tag t1">Overlay</span>
-        <h3>Overlay intelligent</h3>
-        <p class="feat-benefit">Ne regardez jamais ailleurs pendant un scan.</p>
-        <p>HUD transparent avec progression 1/3 → 2/3 → 3/3, distance minimale entre échantillons, notification "Scan possible", valeur estimée de l'espèce. Apparaît uniquement quand nécessaire.</p>
-      </div>
-      <div class="feat reveal delay-2">
-        <div class="feat-icon fi2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <span class="feat-tag t2">Valeurs</span>
-        <h3>Base de données complète</h3>
-        <p class="feat-benefit">Connaissez la valeur réelle de chaque découverte.</p>
-        <p>95+ espèces avec valeur de base, bonus First Footfall (×5) et colony range. Estimation par genre après DSS — avant même d'atterrir.</p>
-      </div>
-      <div class="feat reveal delay-3">
-        <div class="feat-icon fi3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <span class="feat-tag t3">Systèmes</span>
-        <h3>Systèmes vérifiés uniquement</h3>
-        <p class="feat-benefit">Un onglet propre, sans pollution de données.</p>
-        <p>Seuls les systèmes réellement explorés apparaissent. Distance en temps réel, progression des bios, filtres avancés, badge SCANNÉ.</p>
-      </div>
-      <div class="feat reveal delay-1">
-        <div class="feat-icon fi4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
-        <span class="feat-tag t4">Historique</span>
-        <h3>Historique complet</h3>
-        <p class="feat-benefit">Votre carnet d'explorateur numérique.</p>
-        <p>Toutes les espèces scannées avec statut NON VENDU / VENDU / PERDU. Détection automatique des ventes Vista Genomics et des décès.</p>
-      </div>
-      <div class="feat reveal delay-2">
-        <div class="feat-icon fi5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
-        <span class="feat-tag t5">Sauvegarde</span>
-        <h3>Import / Export facile</h3>
-        <p class="feat-benefit">Changez de PC sans perdre un seul scan.</p>
-        <p>Export JSON en un clic, import avec backup automatique. Migrez votre progression sur n'importe quelle machine en quelques secondes.</p>
-      </div>
-      <div class="feat reveal delay-3">
-        <div class="feat-icon fi6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
-        <span class="feat-tag t6">Aide</span>
-        <h3>Centre d'aide intégré</h3>
-        <p class="feat-benefit">Tout ce qu'il faut pour bien démarrer.</p>
-        <p>Documentation complète, distances par genre, raccourcis clavier, assistant de première configuration. Pas besoin de chercher en dehors.</p>
-      </div>
-    </div>
-    <div class="btn-center reveal">
-      <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary" target="_blank" rel="noopener">&#11015; Télécharger gratuitement</a>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════ SCREENSHOTS ═══════════ -->
-<section id="screenshots" class="bg-alt">
-  <div class="c text-center">
-    <div class="s-label reveal">Captures d'écran</div>
-    <h2 class="s-title reveal">Voyez Exobiology Scanner en situation réelle</h2>
-    <p class="s-sub reveal">Chaque onglet est pensé pour être clair, rapide et efficace pendant vos expéditions.</p>
-    <div class="shots-grid">
-      <div class="shot reveal delay-1" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/scanner.png" alt="Onglet Scanner"></div><div class="shot-label">Onglet Scanner</div></div>
-      <div class="shot reveal delay-2" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/systemes.png" alt="Onglet Systèmes"></div><div class="shot-label">Onglet Systèmes</div></div>
-      <div class="shot reveal delay-3" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/planetes.png" alt="Onglet Planètes"></div><div class="shot-label">Onglet Planètes</div></div>
-      <div class="shot reveal delay-1" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/journals.png" alt="Onglet Journals"></div><div class="shot-label">Onglet Journals</div></div>
-      <div class="shot reveal delay-2" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/overlay-scan.png" alt="Overlay HUD en jeu"></div><div class="shot-label">Overlay HUD en jeu</div></div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════ HOW IT WORKS ═══════════ -->
@@ -661,7 +592,6 @@ section{padding:88px 0}
       </div>
     </div>
     <div class="btn-center reveal">
-      <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary btn-lg" target="_blank" rel="noopener">&#11015; Commencer maintenant — c'est gratuit</a>
     </div>
   </div>
 </section>
@@ -715,7 +645,6 @@ section{padding:88px 0}
         <div class="free-pt"><span class="free-ck">&#10003;</span>Aucune limitation cachée</div>
         <div class="free-pt"><span class="free-ck">&#10003;</span>Open source partiel</div>
       </div>
-      <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary btn-lg" target="_blank" rel="noopener">&#11015; Télécharger gratuitement</a>
     </div>
   </div>
 </section>
@@ -842,7 +771,7 @@ section{padding:88px 0}
     <p class="reveal">Rejoignez les commandants qui ne laissent plus jamais filer une bio rentable.</p>
     <div class="cta-btns reveal">
       <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary btn-lg" target="_blank" rel="noopener">&#11015; Télécharger gratuitement</a>
-      <a href="#features" class="btn btn-ghost btn-lg">Voir les fonctionnalités</a>
+      <a href="#tabs" class="btn btn-ghost btn-lg">Voir les fonctionnalités</a>
     </div>
     <div style="margin-top:20px;font-size:12px;color:var(--muted);position:relative;z-index:1" class="reveal">
       Windows · Gratuit · Données locales · Compatible Odyssey
@@ -860,7 +789,7 @@ section{padding:88px 0}
       </div>
       <ul class="footer-links">
         <li><a href="#download">Télécharger</a></li>
-        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#tabs">Fonctionnalités</a></li>
         <li><a href="#overlay">Overlay</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#">Discord</a></li>
