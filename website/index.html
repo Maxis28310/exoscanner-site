@@ -281,6 +281,25 @@ section{padding:88px 0}
 .rm-soon{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
 .rm-planned{background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.2)}
 .rm-idea{background:rgba(148,163,184,.07);color:var(--muted);border:1px solid rgba(148,163,184,.12)}
+/* ═══ CHANGELOG ═══ */
+.cl-timeline{display:flex;flex-direction:column;gap:0;margin-top:48px;position:relative;max-width:780px;margin-left:auto;margin-right:auto}
+.cl-timeline::before{content:'';position:absolute;left:18px;top:10px;bottom:10px;width:2px;background:linear-gradient(to bottom,var(--cyan),rgba(0,212,255,.1));border-radius:2px}
+.cl-version{position:relative;padding-left:56px;padding-bottom:40px}
+.cl-version:last-child{padding-bottom:0}
+.cl-version-dot{position:absolute;left:10px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,.5),0 0 24px rgba(0,212,255,.15);border:2px solid rgba(0,212,255,.3);flex-shrink:0}
+.cl-version-dot.old{background:rgba(0,212,255,.3);box-shadow:none;border-color:rgba(0,212,255,.15)}
+.cl-version-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;backdrop-filter:blur(10px);transition:var(--tr)}
+.cl-version-card:hover{border-color:var(--border-h);transform:translateY(-2px)}
+.cl-version-head{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.cl-version-num{font-family:var(--font-mono,monospace);font-size:17px;font-weight:800;color:#fff;letter-spacing:.03em}
+.cl-version-date{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.5px}
+.cl-version-badge{padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cl-badge-latest{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.cl-badge-stable{background:rgba(74,222,128,.08);color:var(--green);border:1px solid rgba(74,222,128,.2)}
+.cl-version-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.cl-version-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--dim);line-height:1.5}
+.cl-version-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:6px;box-shadow:0 0 5px rgba(0,212,255,.35)}
+@media(max-width:600px){.cl-timeline::before{left:12px}.cl-version{padding-left:38px}.cl-version-dot{left:4px;width:16px;height:16px}.cl-version-card{padding:18px 16px}}
 
 /* ═══ COMMUNITY ═══ */
 .community-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -414,6 +433,102 @@ section{padding:88px 0}
   <a href="#why" style="color:var(--muted);text-decoration:none;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;display:inline-flex;flex-direction:column;align-items:center;gap:5px;transition:color .2s" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">EXPLORER<span style="font-size:20px;animation:bounce 2s infinite">&#8964;</span></a>
 </div>
 
+<!-- ═══════════ OVERLAY PREMIUM ═══════════ -->
+<section id="overlay" class="overlay-section bg-alt">
+  <div class="c">
+    <div class="overlay-grid">
+      <div class="reveal-left">
+        <div class="s-label">Fonctionnalité principale</div>
+        <h2 class="s-title">Votre assistant directement dans le jeu</h2>
+        <p style="font-size:15.5px;color:var(--dim);line-height:1.75;margin-bottom:24px">L'overlay Exobiology Scanner s'affiche par-dessus Elite Dangerous de façon transparente et non intrusive. Il sait exactement quand apparaître et quand s'effacer.</p>
+        <div class="overlay-features">
+          <div class="overlay-feat">
+            <div class="overlay-feat-icon">⬡</div>
+            <div class="overlay-feat-text"><h5>Progression 1/3 → 2/3 → 3/3</h5><p>Suivez exactement où vous en êtes dans chaque scan sans perdre le fil.</p></div>
+          </div>
+          <div class="overlay-feat">
+            <div class="overlay-feat-icon">📡</div>
+            <div class="overlay-feat-text"><h5>Distance minimale en temps réel</h5><p>Ne perdez plus de temps à chercher le bon emplacement pour votre prochain échantillon.</p></div>
+          </div>
+          <div class="overlay-feat">
+            <div class="overlay-feat-icon">✓</div>
+            <div class="overlay-feat-text"><h5>Notification "Scan possible"</h5><p>L'overlay vous prévient dès que vous êtes à portée pour effectuer un scan valide.</p></div>
+          </div>
+          <div class="overlay-feat">
+            <div class="overlay-feat-icon">◈</div>
+            <div class="overlay-feat-text"><h5>Valeur estimée de l'espèce</h5><p>Prenez vos décisions d'exploration avec la valeur Vista Genomics affichée en permanence.</p></div>
+          </div>
+        </div>
+        <div style="margin-top:28px">
+          <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary" target="_blank" rel="noopener">&#11015; Télécharger et essayer l'overlay</a>
+        </div>
+      </div>
+      <div class="overlay-visual reveal-right">
+        <div class="overlay-preview">
+          <div class="ovg-slides" id="ovg">
+            <div class="ovg-slide active">
+              <img src="screenshots/overlay-scan.png" alt="Overlay — scan en cours">
+            </div>
+            <div class="ovg-slide">
+              <img src="screenshots/overlay-complete.png" alt="Overlay — bios terminées">
+            </div>
+          </div>
+          <div class="overlay-preview-glow"></div>
+        </div>
+        <div class="ovg-dots" id="ovg-dots">
+          <div class="ovg-dot active" onclick="ovgGo(0)"></div>
+          <div class="ovg-dot" onclick="ovgGo(1)"></div>
+        </div>
+        <div class="ovg-caption" id="ovg-cap">Scan en cours — progression 1/3</div>
+        <div class="overlay-badge-wrap">
+          <div class="ov-badge">Overlay actif</div>
+          <div class="ov-badge" style="--green:var(--cyan)">Compatible Odyssey</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TABS ═══════════ -->
+<section id="tabs">
+  <div class="c text-center">
+    <div class="s-label reveal">Détail</div>
+    <h2 class="s-title reveal">Explorez chaque fonctionnalité en détail</h2>
+    <p class="s-sub reveal">Chaque onglet répond à un besoin précis de l'explorateur exobiologiste.</p>
+    <div class="tabs-nav reveal">
+      <button class="tab-btn active" onclick="stab('overlay',this)">Overlay</button>
+      <button class="tab-btn" onclick="stab('scanner',this)">Scanner</button>
+      <button class="tab-btn" onclick="stab('systemes',this)">Systèmes</button>
+      <button class="tab-btn" onclick="stab('planetes',this)">Planètes</button>
+      <button class="tab-btn" onclick="stab('journals',this)">Journals</button>
+      <button class="tab-btn" onclick="stab('config',this)">Configuration</button>
+    </div>
+    <div class="tab-c active" id="t-overlay"><div class="tab-panel"><div class="tab-text"><h3>Overlay intelligent en jeu</h3><p>L'assistant exobiologie directement intégré à Elite Dangerous. Toutes les informations essentielles sont affichées en temps réel pendant vos explorations, sans quitter le jeu.</p><ul><li>Progression des scans : 1/3 → 2/3 → 3/3</li><li>Distance minimale avant le prochain échantillon</li><li>Notification "Scan possible"</li><li>Valeur estimée de l'espèce détectée</li><li>Informations contextuelles en temps réel</li><li>Overlay transparent et non intrusif</li><li>Compatible Elite Dangerous Odyssey</li><li>Apparition automatique uniquement lorsque nécessaire</li></ul></div><div class="tslide-wrap" id="tslide-wrap">
+        <div class="tab-shot" style="position:relative">
+          <div class="tslide active" onclick="tslideOpenLB(0)">
+            <img src="screenshots/overlay-scan.png" alt="Pendant le scan">
+            <div class="tslide-cap">Pendant le scan</div>
+          </div>
+          <div class="tslide" onclick="tslideOpenLB(1)">
+            <img src="screenshots/overlay-complete.png" alt="Planète terminée">
+            <div class="tslide-cap">Plan&#232;te termin&#233;e</div>
+          </div>
+          <button class="tslide-arrow tslide-prev" onclick="event.stopPropagation();tslideGo(-1)">&#8249;</button>
+          <button class="tslide-arrow tslide-next" onclick="event.stopPropagation();tslideGo(1)">&#8250;</button>
+        </div>
+        <div class="tslide-dots">
+          <span class="tslide-dot active" onclick="tslideTo(0)"></span>
+          <span class="tslide-dot" onclick="tslideTo(1)"></span>
+        </div>
+      </div></div></div>
+    <div class="tab-c" id="t-scanner"><div class="tab-panel"><div class="tab-text"><h3>Scanner</h3><p>Le centre de votre activité d'exobiologie. Tout est automatique via les Journals.</p><ul><li>Statistiques globales en temps réel</li><li>Total vendu avec format compact</li><li>Estimation planète (fourchette min/max par genre)</li><li>Données transportées (valeur à risque)</li><li>Journal de détection en direct</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Scanner"></div></div></div>
+    <div class="tab-c" id="t-systemes"><div class="tab-panel"><div class="tab-text"><h3>Systèmes</h3><p>Vue d'ensemble de tous les systèmes réellement explorés.</p><ul><li>Systèmes vérifiés uniquement (honk, DSS, bio)</li><li>Distance en temps réel</li><li>Progression des bios et filtres avancés</li><li>Badge SCANNÉ pour systèmes sans bios</li></ul></div><div class="tab-shot"><img src="screenshots/systemes.png" alt="Systèmes"></div></div></div>
+    <div class="tab-c" id="t-planetes"><div class="tab-panel"><div class="tab-text"><h3>Planètes</h3><p>Suivi détaillé planète par planète.</p><ul><li>Statuts : Complétée / À faire</li><li>Progression bio_done / bio_count</li><li>Notes personnelles et actions rapides</li></ul></div><div class="tab-shot"><img src="screenshots/planetes.png" alt="Planètes"></div></div></div>
+    <div class="tab-c" id="t-journals"><div class="tab-panel"><div class="tab-text"><h3>Journals</h3><p>Historique complet de vos scans et ventes.</p><ul><li>Statuts : NON VENDU / VENDU / PERDU</li><li>Données transportées (montant à risque)</li><li>Gains par système</li><li>Gestion automatique de la mort</li></ul></div><div class="tab-shot"><img src="screenshots/journals.png" alt="Journals"></div></div></div>
+    <div class="tab-c" id="t-config"><div class="tab-panel"><div class="tab-text"><h3>Configuration</h3><p>Paramètres, overlay et sauvegarde.</p><ul><li>Mode debug overlay (Ctrl+Shift+O)</li><li>Export / Import JSON</li><li>Backup automatique avant import</li><li>Centre d'aide intégré</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Config"></div></div></div>
+  </div>
+</section>
+
 <!-- ═══════════ WHY ═══════════ -->
 <section id="why" class="bg-alt">
   <div class="c text-center">
@@ -443,7 +558,7 @@ section{padding:88px 0}
       </div>
       <div class="why-card reveal delay-3">
         <div class="why-icon wi6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="why-body"><h4>Données 100% locales et sécurisées</h4><p>Aucun compte, aucun serveur, aucune connexion. Toutes vos données restent sur votre PC dans une base SQLite locale.</p></div>
+        <div class="why-body"><h4>Vos données sous votre contrôle</h4><p>Aucun compte requis. Toutes vos données d'exploration sont stockées localement dans une base SQLite et exportables à tout moment.</p></div>
       </div>
     </div>
   </div>
@@ -516,106 +631,11 @@ section{padding:88px 0}
       <div class="shot reveal delay-2" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/systemes.png" alt="Onglet Systèmes"></div><div class="shot-label">Onglet Systèmes</div></div>
       <div class="shot reveal delay-3" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/planetes.png" alt="Onglet Planètes"></div><div class="shot-label">Onglet Planètes</div></div>
       <div class="shot reveal delay-1" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/journals.png" alt="Onglet Journals"></div><div class="shot-label">Onglet Journals</div></div>
-      <div class="shot reveal delay-2" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/overlay.png" alt="Overlay HUD en jeu"></div><div class="shot-label">Overlay HUD en jeu</div></div>
+      <div class="shot reveal delay-2" onclick="openLB(this)"><div class="shot-img"><img src="screenshots/overlay-scan.png" alt="Overlay HUD en jeu"></div><div class="shot-label">Overlay HUD en jeu</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ TABS ═══════════ -->
-<section id="tabs">
-  <div class="c text-center">
-    <div class="s-label reveal">Détail</div>
-    <h2 class="s-title reveal">Explorez chaque fonctionnalité en détail</h2>
-    <p class="s-sub reveal">Chaque onglet répond à un besoin précis de l'explorateur exobiologiste.</p>
-    <div class="tabs-nav reveal">
-      <button class="tab-btn active" onclick="stab('overlay',this)">Overlay</button>
-      <button class="tab-btn" onclick="stab('scanner',this)">Scanner</button>
-      <button class="tab-btn" onclick="stab('systemes',this)">Systèmes</button>
-      <button class="tab-btn" onclick="stab('planetes',this)">Planètes</button>
-      <button class="tab-btn" onclick="stab('journals',this)">Journals</button>
-      <button class="tab-btn" onclick="stab('config',this)">Configuration</button>
-    </div>
-    <div class="tab-c active" id="t-overlay"><div class="tab-panel"><div class="tab-text"><h3>Overlay intelligent en jeu</h3><p>L'assistant exobiologie directement intégré à Elite Dangerous. Toutes les informations essentielles sont affichées en temps réel pendant vos explorations, sans quitter le jeu.</p><ul><li>Progression des scans : 1/3 → 2/3 → 3/3</li><li>Distance minimale avant le prochain échantillon</li><li>Notification "Scan possible"</li><li>Valeur estimée de l'espèce détectée</li><li>Informations contextuelles en temps réel</li><li>Overlay transparent et non intrusif</li><li>Compatible Elite Dangerous Odyssey</li><li>Apparition automatique uniquement lorsque nécessaire</li></ul></div><div class="tslide-wrap" id="tslide-wrap">
-        <div class="tab-shot" style="position:relative">
-          <div class="tslide active" onclick="tslideOpenLB(0)">
-            <img src="screenshots/overlay-scan.png" alt="Pendant le scan">
-            <div class="tslide-cap">Pendant le scan</div>
-          </div>
-          <div class="tslide" onclick="tslideOpenLB(1)">
-            <img src="screenshots/overlay-complete.png" alt="Planète terminée">
-            <div class="tslide-cap">Plan&#232;te termin&#233;e</div>
-          </div>
-          <button class="tslide-arrow tslide-prev" onclick="event.stopPropagation();tslideGo(-1)">&#8249;</button>
-          <button class="tslide-arrow tslide-next" onclick="event.stopPropagation();tslideGo(1)">&#8250;</button>
-        </div>
-        <div class="tslide-dots">
-          <span class="tslide-dot active" onclick="tslideTo(0)"></span>
-          <span class="tslide-dot" onclick="tslideTo(1)"></span>
-        </div>
-      </div></div></div>
-    <div class="tab-c" id="t-scanner"><div class="tab-panel"><div class="tab-text"><h3>Scanner</h3><p>Le centre de votre activité d'exobiologie. Tout est automatique via les Journals.</p><ul><li>Statistiques globales en temps réel</li><li>Total vendu avec format compact</li><li>Estimation planète (fourchette min/max par genre)</li><li>Données transportées (valeur à risque)</li><li>Journal de détection en direct</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Scanner"></div></div></div>
-    <div class="tab-c" id="t-systemes"><div class="tab-panel"><div class="tab-text"><h3>Systèmes</h3><p>Vue d'ensemble de tous les systèmes réellement explorés.</p><ul><li>Systèmes vérifiés uniquement (honk, DSS, bio)</li><li>Distance en temps réel</li><li>Progression des bios et filtres avancés</li><li>Badge SCANNÉ pour systèmes sans bios</li></ul></div><div class="tab-shot"><img src="screenshots/systemes.png" alt="Systèmes"></div></div></div>
-    <div class="tab-c" id="t-planetes"><div class="tab-panel"><div class="tab-text"><h3>Planètes</h3><p>Suivi détaillé planète par planète.</p><ul><li>Statuts : Complétée / À faire</li><li>Progression bio_done / bio_count</li><li>Notes personnelles et actions rapides</li></ul></div><div class="tab-shot"><img src="screenshots/planetes.png" alt="Planètes"></div></div></div>
-    <div class="tab-c" id="t-journals"><div class="tab-panel"><div class="tab-text"><h3>Journals</h3><p>Historique complet de vos scans et ventes.</p><ul><li>Statuts : NON VENDU / VENDU / PERDU</li><li>Données transportées (montant à risque)</li><li>Gains par système</li><li>Gestion automatique de la mort</li></ul></div><div class="tab-shot"><img src="screenshots/journals.png" alt="Journals"></div></div></div>
-    <div class="tab-c" id="t-config"><div class="tab-panel"><div class="tab-text"><h3>Configuration</h3><p>Paramètres, overlay et sauvegarde.</p><ul><li>Mode debug overlay (Ctrl+Shift+O)</li><li>Export / Import JSON</li><li>Backup automatique avant import</li><li>Centre d'aide intégré</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Config"></div></div></div>
-  </div>
-</section>
-
-<!-- ═══════════ OVERLAY PREMIUM ═══════════ -->
-<section id="overlay" class="overlay-section bg-alt">
-  <div class="c">
-    <div class="overlay-grid">
-      <div class="reveal-left">
-        <div class="s-label">Fonctionnalité principale</div>
-        <h2 class="s-title">Votre assistant directement dans le jeu</h2>
-        <p style="font-size:15.5px;color:var(--dim);line-height:1.75;margin-bottom:24px">L'overlay Exobiology Scanner s'affiche par-dessus Elite Dangerous de façon transparente et non intrusive. Il sait exactement quand apparaître et quand s'effacer.</p>
-        <div class="overlay-features">
-          <div class="overlay-feat">
-            <div class="overlay-feat-icon">⬡</div>
-            <div class="overlay-feat-text"><h5>Progression 1/3 → 2/3 → 3/3</h5><p>Suivez exactement où vous en êtes dans chaque scan sans perdre le fil.</p></div>
-          </div>
-          <div class="overlay-feat">
-            <div class="overlay-feat-icon">📡</div>
-            <div class="overlay-feat-text"><h5>Distance minimale en temps réel</h5><p>Ne perdez plus de temps à chercher le bon emplacement pour votre prochain échantillon.</p></div>
-          </div>
-          <div class="overlay-feat">
-            <div class="overlay-feat-icon">✓</div>
-            <div class="overlay-feat-text"><h5>Notification "Scan possible"</h5><p>L'overlay vous prévient dès que vous êtes à portée pour effectuer un scan valide.</p></div>
-          </div>
-          <div class="overlay-feat">
-            <div class="overlay-feat-icon">◈</div>
-            <div class="overlay-feat-text"><h5>Valeur estimée de l'espèce</h5><p>Prenez vos décisions d'exploration avec la valeur Vista Genomics affichée en permanence.</p></div>
-          </div>
-        </div>
-        <div style="margin-top:28px">
-          <a href="https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe" class="btn btn-primary" target="_blank" rel="noopener">&#11015; Télécharger et essayer l'overlay</a>
-        </div>
-      </div>
-      <div class="overlay-visual reveal-right">
-        <div class="overlay-preview">
-          <div class="ovg-slides" id="ovg">
-            <div class="ovg-slide active">
-              <img src="screenshots/overlay.png" alt="Overlay — scan en cours">
-            </div>
-            <div class="ovg-slide">
-              <img src="screenshots/overlay-done.png" alt="Overlay — bios terminées">
-            </div>
-          </div>
-          <div class="overlay-preview-glow"></div>
-        </div>
-        <div class="ovg-dots" id="ovg-dots">
-          <div class="ovg-dot active" onclick="ovgGo(0)"></div>
-          <div class="ovg-dot" onclick="ovgGo(1)"></div>
-        </div>
-        <div class="ovg-caption" id="ovg-cap">Scan en cours — progression 1/3</div>
-        <div class="overlay-badge-wrap">
-          <div class="ov-badge">Overlay actif</div>
-          <div class="ov-badge" style="--green:var(--cyan)">Compatible Odyssey</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════ HOW IT WORKS ═══════════ -->
 <section id="how">
@@ -655,7 +675,7 @@ section{padding:88px 0}
     <div class="trust-grid">
       <div class="trust-card reveal delay-1">
         <div class="trust-ck tck1">&#10003;</div>
-        <div class="trust-card-text"><h4>Aucun compte requis</h4><p>Pas d'inscription, pas d'email, pas de profil en ligne. L'application fonctionne immédiatement, point.</p></div>
+        <div class="trust-card-text"><h4>Aucun compte requis</h4><p>Utilisez l'application librement, sans création de profil obligatoire. Les futures statistiques communautaires pourront rester anonymes.</p></div>
       </div>
       <div class="trust-card reveal delay-2">
         <div class="trust-ck tck2">&#10003;</div>
@@ -663,7 +683,7 @@ section{padding:88px 0}
       </div>
       <div class="trust-card reveal delay-3">
         <div class="trust-ck tck3">&#10003;</div>
-        <div class="trust-card-text"><h4>Données stockées localement</h4><p>Vos données restent sur votre PC dans une base SQLite. Rien n'est envoyé sur internet. Jamais.</p></div>
+        <div class="trust-card-text"><h4>Données stockées localement</h4><p>Vos données d'exploration sont conservées sur votre PC dans une base SQLite locale, exportables et sous votre contrôle.</p></div>
       </div>
       <div class="trust-card reveal delay-1">
         <div class="trust-ck tck4">&#10003;</div>
@@ -671,11 +691,11 @@ section{padding:88px 0}
       </div>
       <div class="trust-card reveal delay-2">
         <div class="trust-ck tck5">&#10003;</div>
-        <div class="trust-card-text"><h4>Lecture seule des Journals</h4><p>Exobiology Scanner ne modifie rien. Il observe et analyse les données que le jeu génère lui-même.</p></div>
+        <div class="trust-card-text"><h4>Respect de vos données</h4><p>Vos données d'exploration restent sous votre contrôle et peuvent être exportées à tout moment.</p></div>
       </div>
       <div class="trust-card reveal delay-3">
         <div class="trust-ck tck6">&#10003;</div>
-        <div class="trust-card-text"><h4>Aucun accès aux serveurs du jeu</h4><p>L'application ne communique avec aucun serveur, ni ceux de Frontier ni les nôtres. 100% hors-ligne.</p></div>
+        <div class="trust-card-text"><h4>Aucun accès aux serveurs du jeu</h4><p>L'application ne communique pas avec les serveurs de Frontier Developments et ne modifie pas Elite Dangerous.</p></div>
       </div>
     </div>
   </div>
@@ -732,6 +752,65 @@ section{padding:88px 0}
       <div class="rm-item reveal delay-1"><div class="rm-dot planned"></div><div class="rm-content"><h5>Mode expédition</h5><p>Planification de routes exobiologiques optimisées</p><span class="rm-tag rm-planned">Planifié</span></div></div>
       <div class="rm-item reveal delay-2"><div class="rm-dot planned"></div><div class="rm-content"><h5>Carte des systèmes</h5><p>Visualisation 3D de vos explorations dans la galaxie</p><span class="rm-tag rm-planned">Planifié</span></div></div>
       <div class="rm-item reveal delay-3"><div class="rm-dot idea"></div><div class="rm-content"><h5>Partage communautaire</h5><p>Partagez vos meilleures découvertes avec la communauté</p><span class="rm-tag rm-idea">À l'étude</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CHANGELOG ═══════════ -->
+<section id="changelog">
+  <div class="c text-center">
+    <div class="s-label reveal">Historique</div>
+    <h2 class="s-title reveal">Changelog</h2>
+    <p class="s-sub reveal">Suivez l'évolution d'Exobiology Scanner au fil des versions.</p>
+
+    <div class="cl-timeline">
+
+      <!-- ═ Pour ajouter une nouvelle version, dupliquer ce bloc ═
+           Changer : cl-version-num, cl-version-date, cl-badge-*, cl-version-list
+           Pour les anciennes versions : remplacer cl-badge-latest par cl-badge-stable
+                                         remplacer cl-version-dot par cl-version-dot old  -->
+
+      <!-- VERSION 1.0.0 -->
+      <div class="cl-version reveal">
+        <div class="cl-version-dot"></div>
+        <div class="cl-version-card">
+          <div class="cl-version-head">
+            <span class="cl-version-num">v1.0.0</span>
+            <span class="cl-version-date">Juin 2026</span>
+            <span class="cl-version-badge cl-badge-latest">Dernière version</span>
+          </div>
+          <ul class="cl-version-list">
+            <li>Première version publique</li>
+            <li>Overlay en jeu — HUD transparent et non intrusif</li>
+            <li>Suivi automatique via les Journals Elite Dangerous</li>
+            <li>Gestion des systèmes explorés</li>
+            <li>Gestion des planètes avec suivi des bios</li>
+            <li>Historique complet des scans biologiques</li>
+            <li>Estimation des valeurs Vista Genomics en temps réel</li>
+            <li>Import / Export JSON des données</li>
+            <li>Sauvegarde automatique de la base de données</li>
+            <li>Centre d'aide intégré</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- VERSION 1.1.0 — décommentez quand disponible
+      <div class="cl-version reveal">
+        <div class="cl-version-dot"></div>
+        <div class="cl-version-card">
+          <div class="cl-version-head">
+            <span class="cl-version-num">v1.1.0</span>
+            <span class="cl-version-date">À venir</span>
+            <span class="cl-version-badge cl-badge-latest">Dernière version</span>
+          </div>
+          <ul class="cl-version-list">
+            <li>Nouveauté 1</li>
+            <li>Nouveauté 2</li>
+          </ul>
+        </div>
+      </div>
+      -->
+
     </div>
   </div>
 </section>
