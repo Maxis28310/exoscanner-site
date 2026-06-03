@@ -187,6 +187,19 @@ section{padding:88px 0}
 .tab-text li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;box-shadow:0 0 6px rgba(0,212,255,.4)}
 .tab-shot{border-radius:var(--r);border:1px solid var(--border);aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,rgba(0,212,255,.03),rgba(167,139,250,.02))}
 .tab-shot img{width:100%;height:100%;object-fit:cover}
+/* ═══ TAB OVERLAY SLIDER ═══ */
+.tslide-wrap{position:relative}
+.tslide{display:none;width:100%;height:100%;position:relative;cursor:zoom-in}
+.tslide.active{display:block}
+.tslide img{width:100%;height:100%;object-fit:cover;display:block}
+.tslide-cap{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(2,5,16,.88));color:rgba(226,232,240,.8);font-size:11.5px;font-weight:600;letter-spacing:.7px;text-align:center;text-transform:uppercase;pointer-events:none}
+.tslide-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:32px;height:32px;border-radius:8px;border:1px solid rgba(0,212,255,.28);background:rgba(4,8,20,.78);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);backdrop-filter:blur(6px);line-height:1;padding:0}
+.tslide-arrow:hover{background:rgba(0,212,255,.14);border-color:rgba(0,212,255,.5)}
+.tslide-prev{left:10px}
+.tslide-next{right:10px}
+.tslide-dots{display:flex;justify-content:center;gap:8px;padding:9px 0 2px}
+.tslide-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,212,255,.18);border:1px solid rgba(0,212,255,.3);cursor:pointer;transition:background .22s,transform .22s}
+.tslide-dot.active{background:var(--cyan);transform:scale(1.3);border-color:var(--cyan)}
 
 /* ═══ OVERLAY PREMIUM ═══ */
 .overlay-section{position:relative;overflow:hidden;padding:100px 0}
@@ -207,6 +220,15 @@ section{padding:88px 0}
 .ov-badge{background:rgba(4,8,20,.9);border:1px solid rgba(0,212,255,.25);border-radius:10px;padding:8px 14px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.8px;text-transform:uppercase;backdrop-filter:blur(10px);white-space:nowrap;display:flex;align-items:center;gap:7px}
 .ov-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite}
 @media(max-width:900px){.overlay-badge-wrap{display:none}}
+/* ═══ OVERLAY GALLERY (slider 2 images) ═══ */
+.ovg-slides{position:relative;overflow:hidden;border-radius:18px}
+.ovg-slide{display:none;width:100%}
+.ovg-slide.active{display:block}
+.ovg-slide img{width:100%;height:auto;display:block}
+.ovg-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.ovg-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,212,255,.2);border:1px solid rgba(0,212,255,.3);cursor:pointer;transition:background .25s,transform .25s}
+.ovg-dot.active{background:var(--cyan);transform:scale(1.25)}
+.ovg-caption{text-align:center;font-size:12px;color:var(--dim);margin-top:8px;letter-spacing:.5px;min-height:18px;transition:opacity .2s}
 
 /* ═══ HOW IT WORKS ═══ */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
@@ -513,7 +535,24 @@ section{padding:88px 0}
       <button class="tab-btn" onclick="stab('journals',this)">Journals</button>
       <button class="tab-btn" onclick="stab('config',this)">Configuration</button>
     </div>
-    <div class="tab-c active" id="t-overlay"><div class="tab-panel"><div class="tab-text"><h3>Overlay intelligent en jeu</h3><p>L'assistant exobiologie directement intégré à Elite Dangerous. Toutes les informations essentielles sont affichées en temps réel pendant vos explorations, sans quitter le jeu.</p><ul><li>Progression des scans : 1/3 → 2/3 → 3/3</li><li>Distance minimale avant le prochain échantillon</li><li>Notification "Scan possible"</li><li>Valeur estimée de l'espèce détectée</li><li>Informations contextuelles en temps réel</li><li>Overlay transparent et non intrusif</li><li>Compatible Elite Dangerous Odyssey</li><li>Apparition automatique uniquement lorsque nécessaire</li></ul></div><div class="tab-shot"><img src="screenshots/overlay.png" alt="Overlay en jeu"></div></div></div>
+    <div class="tab-c active" id="t-overlay"><div class="tab-panel"><div class="tab-text"><h3>Overlay intelligent en jeu</h3><p>L'assistant exobiologie directement intégré à Elite Dangerous. Toutes les informations essentielles sont affichées en temps réel pendant vos explorations, sans quitter le jeu.</p><ul><li>Progression des scans : 1/3 → 2/3 → 3/3</li><li>Distance minimale avant le prochain échantillon</li><li>Notification "Scan possible"</li><li>Valeur estimée de l'espèce détectée</li><li>Informations contextuelles en temps réel</li><li>Overlay transparent et non intrusif</li><li>Compatible Elite Dangerous Odyssey</li><li>Apparition automatique uniquement lorsque nécessaire</li></ul></div><div class="tslide-wrap" id="tslide-wrap">
+        <div class="tab-shot" style="position:relative">
+          <div class="tslide active" onclick="tslideOpenLB(0)">
+            <img src="screenshots/overlay-scan.png" alt="Pendant le scan">
+            <div class="tslide-cap">Pendant le scan</div>
+          </div>
+          <div class="tslide" onclick="tslideOpenLB(1)">
+            <img src="screenshots/overlay-complete.png" alt="Planète terminée">
+            <div class="tslide-cap">Plan&#232;te termin&#233;e</div>
+          </div>
+          <button class="tslide-arrow tslide-prev" onclick="event.stopPropagation();tslideGo(-1)">&#8249;</button>
+          <button class="tslide-arrow tslide-next" onclick="event.stopPropagation();tslideGo(1)">&#8250;</button>
+        </div>
+        <div class="tslide-dots">
+          <span class="tslide-dot active" onclick="tslideTo(0)"></span>
+          <span class="tslide-dot" onclick="tslideTo(1)"></span>
+        </div>
+      </div></div></div>
     <div class="tab-c" id="t-scanner"><div class="tab-panel"><div class="tab-text"><h3>Scanner</h3><p>Le centre de votre activité d'exobiologie. Tout est automatique via les Journals.</p><ul><li>Statistiques globales en temps réel</li><li>Total vendu avec format compact</li><li>Estimation planète (fourchette min/max par genre)</li><li>Données transportées (valeur à risque)</li><li>Journal de détection en direct</li></ul></div><div class="tab-shot"><img src="screenshots/scanner.png" alt="Scanner"></div></div></div>
     <div class="tab-c" id="t-systemes"><div class="tab-panel"><div class="tab-text"><h3>Systèmes</h3><p>Vue d'ensemble de tous les systèmes réellement explorés.</p><ul><li>Systèmes vérifiés uniquement (honk, DSS, bio)</li><li>Distance en temps réel</li><li>Progression des bios et filtres avancés</li><li>Badge SCANNÉ pour systèmes sans bios</li></ul></div><div class="tab-shot"><img src="screenshots/systemes.png" alt="Systèmes"></div></div></div>
     <div class="tab-c" id="t-planetes"><div class="tab-panel"><div class="tab-text"><h3>Planètes</h3><p>Suivi détaillé planète par planète.</p><ul><li>Statuts : Complétée / À faire</li><li>Progression bio_done / bio_count</li><li>Notes personnelles et actions rapides</li></ul></div><div class="tab-shot"><img src="screenshots/planetes.png" alt="Planètes"></div></div></div>
@@ -554,9 +593,21 @@ section{padding:88px 0}
       </div>
       <div class="overlay-visual reveal-right">
         <div class="overlay-preview">
-          <img src="screenshots/overlay.png" alt="Overlay Exobiology Scanner dans Elite Dangerous">
+          <div class="ovg-slides" id="ovg">
+            <div class="ovg-slide active">
+              <img src="screenshots/overlay.png" alt="Overlay — scan en cours">
+            </div>
+            <div class="ovg-slide">
+              <img src="screenshots/overlay-done.png" alt="Overlay — bios terminées">
+            </div>
+          </div>
           <div class="overlay-preview-glow"></div>
         </div>
+        <div class="ovg-dots" id="ovg-dots">
+          <div class="ovg-dot active" onclick="ovgGo(0)"></div>
+          <div class="ovg-dot" onclick="ovgGo(1)"></div>
+        </div>
+        <div class="ovg-caption" id="ovg-cap">Scan en cours — progression 1/3</div>
         <div class="overlay-badge-wrap">
           <div class="ov-badge">Overlay actif</div>
           <div class="ov-badge" style="--green:var(--cyan)">Compatible Odyssey</div>
@@ -1235,10 +1286,82 @@ function closeLB() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
 
+// ═══ Tab Overlay Slider ═══
+(function() {
+  var cur = 0;
+  var total = 2;
+  var data = [
+    { src: 'screenshots/overlay-scan.png',     cap: 'Pendant le scan' },
+    { src: 'screenshots/overlay-complete.png', cap: 'Planète terminée' }
+  ];
+
+  function update() {
+    document.querySelectorAll('.tslide').forEach(function(s, i) {
+      s.classList.toggle('active', i === cur);
+    });
+    document.querySelectorAll('.tslide-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === cur);
+    });
+  }
+
+  window.tslideGo = function(dir) {
+    cur = (cur + dir + total) % total;
+    update();
+  };
+  window.tslideTo = function(i) {
+    cur = i;
+    update();
+  };
+
+  // Réutilise le lightbox existant du site
+  window.tslideOpenLB = function(idx) {
+    document.getElementById('lb-img').src = data[idx].src;
+    document.getElementById('lb-cap').textContent = data[idx].cap;
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Swipe tactile
+  var wrap = document.getElementById('tslide-wrap');
+  if (wrap) {
+    var touchX = 0;
+    wrap.addEventListener('touchstart', function(e) {
+      touchX = e.touches[0].clientX;
+    }, { passive: true });
+    wrap.addEventListener('touchend', function(e) {
+      var diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) tslideGo(diff > 0 ? 1 : -1);
+    }, { passive: true });
+  }
+})();
+
 // ═══ Mobile nav close on link click ═══
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
+
+// ── Overlay gallery slider ────────────────────────────────────
+(function() {
+  var captions = ['Scan en cours — progression 1/3', 'Planète terminée — toutes les bios scannées'];
+  var current = 0;
+  window.ovgGo = function(idx) {
+    var slides = document.querySelectorAll('#ovg .ovg-slide');
+    var dots   = document.querySelectorAll('#ovg-dots .ovg-dot');
+    var cap    = document.getElementById('ovg-cap');
+    if (!slides.length) return;
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    if (cap) cap.textContent = captions[current];
+  };
+  // Auto-avance toutes les 4 secondes
+  setInterval(function() {
+    var slides = document.querySelectorAll('#ovg .ovg-slide');
+    if (slides.length > 1) ovgGo((current + 1) % slides.length);
+  }, 4000);
+})();
 </script>
 </body>
 </html>
