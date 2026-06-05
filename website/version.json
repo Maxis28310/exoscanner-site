@@ -1,0 +1,9 @@
+{
+  "version": "1.0.1",
+  "downloadUrl": "https://exoscanner.com/downloads/ExobiologyScannerSetup.exe",
+  "releaseNotes": [
+    "Correction des statistiques de l'accueil",
+    "Amélioration de l'overlay",
+    "Divers correctifs"
+  ]
+}
