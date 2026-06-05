@@ -1,9 +1,9 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "downloadUrl": "https://github.com/Maxis28310/exoscanner-site/releases/latest/download/ExobiologyScannerSetup.exe",
   "releaseNotes": [
-    "Correction des statistiques de l'accueil",
-    "Amélioration de l'overlay",
+    "Suppression du mode démo",
+    "Correction du système de mise à jour",
     "Divers correctifs"
   ]
 }
