@@ -1,6 +1,6 @@
 {
   "version": "1.0.1",
-  "downloadUrl": "https://exoscanner.com/downloads/ExobiologyScannerSetup.exe",
+  "downloadUrl": "https://github.com/Maxis28310/exoscanner-site/releases/download/v1.0.1/ExobiologyScannerSetup.exe",
   "releaseNotes": [
     "Correction des statistiques de l'accueil",
     "Amélioration de l'overlay",
