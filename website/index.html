@@ -61,20 +61,21 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:h
 /* ═══ NAV ═══ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;background:rgba(2,5,16,0.5);backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid rgba(0,212,255,0.07);transition:background .3s}
 .nav.scrolled{background:rgba(2,5,16,0.94)}
-.nav .c{display:flex;align-items:center;width:100%;gap:0}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav .c{display:flex;align-items:center;width:100%}
+.nav-brand{flex:1;display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-brand svg{width:28px;height:28px;color:var(--cyan)}
 .nav-brand-text .t1,.nav-brand-text .t2{font-family:var(--display);font-size:12.5px;font-weight:900;color:var(--cyan);letter-spacing:2px;display:block;line-height:1.1}
-.nav-links{display:flex;gap:2px;list-style:none;align-items:center;flex:1;justify-content:center}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center}
 .nav-links a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;transition:var(--tr);letter-spacing:.8px;text-transform:uppercase;position:relative}
 .nav-links a:hover{color:#fff}
 .nav-links a.active{color:var(--cyan)}
 .nav-links a.active::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px var(--cyan)}
 .nav-cta{background:var(--cyan)!important;color:#000!important;font-weight:700!important;padding:10px 22px!important;border-radius:10px!important;font-size:12px!important;letter-spacing:.8px!important;box-shadow:0 0 20px rgba(0,212,255,.18);text-transform:uppercase!important}
 .nav-cta:hover{box-shadow:0 0 32px rgba(0,212,255,.35)!important;transform:translateY(-1px)}
+.nav-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:8px}
 .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:6px}
 /* ── Réseaux sociaux nav ── */
-.nav-social-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-left:14px}
+.nav-social-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0}
 li.nav-social{display:none;align-items:center;gap:8px;list-style:none}
 /* Bouton icône carré — icône seule, pas de texte */
 .nav-social-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.07);color:#fff;text-decoration:none;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;flex-shrink:0;padding:0}
@@ -94,6 +95,8 @@ li.nav-social{display:none;align-items:center;gap:8px;list-style:none}
 .discord-toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .discord-toast svg{width:18px;height:18px;fill:#5865f2;flex-shrink:0}
 @media(max-width:900px){
+  .nav-brand{flex:1}
+  .nav-right{flex:0 0 auto}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(2,5,16,.98);backdrop-filter:blur(20px);padding:16px;border-bottom:1px solid var(--border);gap:4px}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
@@ -328,12 +331,14 @@ section{padding:88px 0}
 .rm-item{padding:22px 24px;border-radius:var(--r);border:1px solid var(--border);background:var(--card);backdrop-filter:blur(10px);display:flex;align-items:center;gap:14px;transition:var(--tr)}
 .rm-item:hover{border-color:var(--border-h);transform:translateY(-2px)}
 .rm-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.rm-dot.done{background:var(--green);box-shadow:0 0 8px var(--green)}
 .rm-dot.soon{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 .rm-dot.planned{background:var(--blue);box-shadow:0 0 8px var(--blue);opacity:.7}
 .rm-dot.idea{background:var(--muted);opacity:.5}
 .rm-content h5{font-size:14.5px;font-weight:700;margin-bottom:2px}
 .rm-content p{font-size:12.5px;color:var(--muted)}
 .rm-tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.rm-done{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.3)}
 .rm-soon{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
 .rm-planned{background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.2)}
 .rm-idea{background:rgba(148,163,184,.07);color:var(--muted);border:1px solid rgba(148,163,184,.12)}
@@ -436,7 +441,6 @@ section{padding:88px 0}
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="14"/><circle cx="16" cy="16" r="6"/><path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke-dasharray="2 2"/></svg>
       <div class="nav-brand-text"><span class="t1">EXOBIOLOGY</span><span class="t2">SCANNER</span></div>
     </a>
-    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <ul class="nav-links">
       <li><a href="#" class="active">Accueil</a></li>
       <li><a href="#tabs">Fonctionnalités</a></li>
@@ -454,14 +458,17 @@ section{padding:88px 0}
         </button>
       </li>
     </ul>
-    <!-- Desktop : réseaux sociaux à droite -->
-    <div class="nav-social-wrap">
-      <a href="https://www.facebook.com/profile.php?id=61590311294029&locale=fr_FR" class="nav-social-btn nav-fb" target="_blank" rel="noopener" data-tip="Page Facebook officielle" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.445 18.627 0 12 0S0 5.445 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      </a>
-      <button class="nav-social-btn nav-dc" onclick="showDiscordToast()" data-tip="Communauté Discord bientôt disponible" aria-label="Discord">
-        <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.01.077.048.15.102.2A19.938 19.938 0 0 0 6.205 21.1a.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.1.246.198.373.292a.077.077 0 0 1-.006.127c-.598.35-1.22.645-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028A19.839 19.839 0 0 0 23.9 18.057a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-      </button>
+    <!-- Droite : icônes sociales (desktop) + burger (mobile) -->
+    <div class="nav-right">
+      <div class="nav-social-wrap">
+        <a href="https://www.facebook.com/profile.php?id=61590311294029&locale=fr_FR" class="nav-social-btn nav-fb" target="_blank" rel="noopener" data-tip="Page Facebook officielle" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.445 18.627 0 12 0S0 5.445 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <button class="nav-social-btn nav-dc" onclick="showDiscordToast()" data-tip="Communauté Discord bientôt disponible" aria-label="Discord">
+          <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.01.077.048.15.102.2A19.938 19.938 0 0 0 6.205 21.1a.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.1.246.198.373.292a.077.077 0 0 1-.006.127c-.598.35-1.22.645-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028A19.839 19.839 0 0 0 23.9 18.057a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     </div>
   </div>
 </nav>
@@ -756,8 +763,10 @@ section{padding:88px 0}
     <h2 class="s-title reveal">Ce qui arrive bientôt</h2>
     <p class="s-sub reveal">Exobiology Scanner est un projet actif et en constante évolution. Voici ce qui est prévu pour les prochaines versions.</p>
     <div class="roadmap-grid">
-      <div class="rm-item reveal delay-1"><div class="rm-dot soon"></div><div class="rm-content"><h5>Traduction multilingue</h5><p>Interface complète en anglais, espagnol, allemand</p><span class="rm-tag rm-soon">Bientôt</span></div></div>
-      <div class="rm-item reveal delay-2"><div class="rm-dot planned"></div><div class="rm-content"><h5>Statistiques avancées</h5><p>Graphiques de progression, crédits par session</p><span class="rm-tag rm-planned">Planifié</span></div></div>
+      <div class="rm-item reveal delay-1"><div class="rm-dot done"></div><div class="rm-content"><h5>🌍 Gestion multilingue</h5><p>Changez la langue à tout moment depuis les paramètres. 7 langues disponibles : Français, English, Español, Deutsch, Italiano, Português, Polski.</p><span class="rm-tag rm-done">✓ Disponible</span></div></div>
+      <div class="rm-item reveal delay-2"><div class="rm-dot planned"></div><div class="rm-content"><h5>📊 Statistiques avancées</h5><p>Graphiques de progression, crédits par session</p><span class="rm-tag rm-planned">Planifié</span></div></div>
+      <div class="rm-item reveal delay-3"><div class="rm-dot planned"></div><div class="rm-content"><h5>🏆 Succès / Badges</h5><p>Onglet Succès avec badges, challenges, défis et objectifs à accomplir pour récompenser l'exploration</p><span class="rm-tag rm-planned">Planifié</span></div></div>
+      <div class="rm-item reveal delay-4"><div class="rm-dot planned"></div><div class="rm-content"><h5>🎨 3 overlays différents</h5><p>Compact, standard ou détaillé — chaque joueur choisit l'affichage qui lui convient</p><span class="rm-tag rm-planned">Planifié</span></div></div>
     </div>
   </div>
 </section>
@@ -776,14 +785,34 @@ section{padding:88px 0}
            Pour les anciennes versions : remplacer cl-badge-latest par cl-badge-stable
                                          remplacer cl-version-dot par cl-version-dot old  -->
 
-      <!-- VERSION 1.0.0 -->
+      <!-- VERSION 1.0.2 -->
       <div class="cl-version reveal">
         <div class="cl-version-dot"></div>
         <div class="cl-version-card">
           <div class="cl-version-head">
-            <span class="cl-version-num">v1.0.0</span>
+            <span class="cl-version-num">v1.0.2</span>
             <span class="cl-version-date">Juin 2026</span>
             <span class="cl-version-badge cl-badge-latest">Dernière version</span>
+          </div>
+          <ul class="cl-version-list">
+            <li>🌍 Interface multilingue complète — 7 langues disponibles : Français, English, Español, Deutsch, Italiano, Português, Polski</li>
+            <li>Changement de langue à tout moment depuis l'onglet Configuration, sans redémarrage</li>
+            <li>Choix de la langue dès le premier lancement de l'application</li>
+            <li>Toute l'interface traduite : navigation, statuts, tableaux, toasts, confirmations, diagnostics</li>
+            <li>Formatage des dates et montants adapté à chaque langue</li>
+            <li>Correction du démarrage bloqué sur certaines configurations — splash screen toujours fluide</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- VERSION 1.0.0 -->
+      <div class="cl-version reveal">
+        <div class="cl-version-dot old"></div>
+        <div class="cl-version-card">
+          <div class="cl-version-head">
+            <span class="cl-version-num">v1.0.0</span>
+            <span class="cl-version-date">Juin 2026</span>
+            <span class="cl-version-badge cl-badge-stable">Stable</span>
           </div>
           <ul class="cl-version-list">
             <li>Première version publique</li>
@@ -799,23 +828,6 @@ section{padding:88px 0}
           </ul>
         </div>
       </div>
-
-      <!-- VERSION 1.1.0 — décommentez quand disponible
-      <div class="cl-version reveal">
-        <div class="cl-version-dot"></div>
-        <div class="cl-version-card">
-          <div class="cl-version-head">
-            <span class="cl-version-num">v1.1.0</span>
-            <span class="cl-version-date">À venir</span>
-            <span class="cl-version-badge cl-badge-latest">Dernière version</span>
-          </div>
-          <ul class="cl-version-list">
-            <li>Nouveauté 1</li>
-            <li>Nouveauté 2</li>
-          </ul>
-        </div>
-      </div>
-      -->
 
     </div>
   </div>
