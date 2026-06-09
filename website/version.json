@@ -1,10 +1,12 @@
 {
-  "version": "1.0.2",
-  "downloadUrl": "https://github.com/Maxis28310/exoscanner-site/releases/download/v1.0.2/ExoScannerApp-1.0.2.zip",
-  "sha256": "6903a54cedc5843aa56cbf6622d872253575a5a84ab2e8249ea237696127ed69",
+  "version": "1.0.3",
+  "downloadUrl": "https://github.com/Maxis28310/exoscanner-site/releases/download/v1.0.3/ExoScannerApp-1.0.3.zip",
+  "sha256": "1c62c4c0c303688ca7d1d26f1f2cbf86bb82d1cdfffa28df5d6e8bd4a4557521",
   "releaseNotes": [
-    "Ajout du launcher ExoScanner",
-    "Préparation des mises à jour automatiques"
+    "Système de popup nouveautés après mise à jour automatique",
+    "Launcher simplifié et épuré",
+    "Popup affichée une seule fois par version",
+    "Corrections et améliorations diverses"
   ],
   "minLauncherVersion": "1.0.0"
 }
